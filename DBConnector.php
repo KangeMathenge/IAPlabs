@@ -1,17 +1,24 @@
-<?php
+<?php 
+
+define('DB_SERVER', 'localhost');
+define('DB_USER', 'root');
+define('DB_PASS', '');
+define('DB_NAME', 'btc3205');
 
 
-class DBConnector{
-public $conn;
+class DBConnector
+{
+	public $conn;
 
-function connect(){
-	$this->conn = new  mysqli('localhost','root','','btc3205');
-	
-	return $this->conn;
-}
-function closeDatabase(){
-	mysqli_close($this->conn);
+	function __construct()
+	{
+		$this->conn = mysqli_connect(DB_SERVER,DB_USER,DB_PASS) or die("Error: ".$this->conn->connect_error);
+		mysqli_select_db($this->conn, DB_NAME);
 	}
 
+	public function closeDatabase()
+	{
+		$this->conn->close();
+	}
 }
-?>
+?> 
