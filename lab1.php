@@ -83,7 +83,6 @@ if (isset($_POST['btn-save'])) {
 <head>
 	<title>lab1</title>
 	<script type="text/javascript" src="validate.js"></script>
-	<link rel="stylesheet" type="text/css" href="validate.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script type="text/javascript" src="timezone.js"></script>
 </head>
@@ -114,9 +113,7 @@ if (isset($_POST['btn-save'])) {
 	<?php 
 
 	$users = new User;
-
 	$users = $users->readAll();
-
 	while ($user = $users->fetch_assoc()) {
 		echo "<tr><td>".$user['id']."</td><td>".$user['username']."</td><td>".$user['first_name']."</td><td>".$user['last_name']."</td><td>".$user['user_city']."</td><td>".$user['user_utc_timestamp']."</td><td>".$user['user_offset']."</td><td><img id='profile_pic' src='".$user['profile_pic']."'></td></tr>";
 	}
